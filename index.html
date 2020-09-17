@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:200,300,400,500,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link href="./style.css" rel="stylesheet">
+    <title>
+        Resume | Praveen Kumar
+    </title>
+</head>
+
+<body>
+    <form id="resume_form" onsubmit="submitform()">
+        <div id="click_div">
+            <fieldset>
+                <h2>About</h2>
+                <div>
+                    <input type="text" id="name" />
+                    <input type="text" id="tagline" />
+                    <input type="text" id="mailid" />
+                    <input type="text" id="linkedin" />
+                    <input type="text" id="github" />
+                    <input type="text" id="portfolio" />
+                    <input type="text" id="twitter" />
+                    <input type="text" id="instagram" />
+                    <input type="text" id="pdflink" />
+                </div>
+            </fieldset>
+            <fieldset>
+                <h2>Intro</h2>
+                <p>
+                    <label>
+                        summary
+                    </label>
+                    <textarea name="about"> </textarea>
+                </p>
+            </fieldset>
+            <fieldset>
+                <h2>Skills</h2>
+                <div id="skills">
+                    <div>
+
+                        <button type="button" id="delete">Delete</button>
+                        <input type="text" id="skill[1][heading]" />
+                        <input type="text" id="skill[1][value]" />
+
+                    </div>
+                </div>
+                <button type="button" id="addskills">add skills</button>
+            </fieldset>
+
+            <fieldset>
+                <h2>Education</h2>
+                <div id="education">
+                    <div>
+                        <input type="text" name="education[1][university]" />
+                        <input type="text" name="education[1][course]" />
+                        <input type="text" name="education[1][from]" />
+                        <input type="text" name="education[1][cgpa]" />
+                    </div>
+                </div>
+                <button onclick="return addEducation()">add new education</button>
+            </fieldset>
+
+            <fieldset>
+                <h2>Experience</h2>
+                <div id="experience">
+                    <div>
+                        <input type="text" name="experience[1][name]" />
+                        <input type="text" name="experience[1][role]" />
+                        <input type="text" name="experience[1][description]" />
+                        <input type="text" name="experience[1][duration]" />
+                    </div>
+                </div>
+                <button onclick="return addExperience()">add new experience</button>
+            </fieldset>
+
+            <fieldset>
+                <h2>projects</h2>
+                <div id="project">
+                    <div>
+                        <input type="text" name="experience[1][name]" />
+                        <input type="text" name="experience[1][description]" />
+                    </div>
+                </div>
+                <button onclick="return addProjects()">add new projects</button>
+            </fieldset>
+
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+    <script src="/index.js">
+
+
+    </script>
+
+</body>
+
+</html>
