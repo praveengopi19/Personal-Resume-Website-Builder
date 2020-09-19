@@ -7,26 +7,30 @@
     <link href="https://fonts.googleapis.com/css?family=Catamaran:200,300,400,500,600,700" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link href="./style.css" rel="stylesheet">
+    <script type="text/javascript" src="./jszip.js"></script>
+    <script type="text/javascript" src="./jszip.min.js"></script>
     <title>
-        Resume | Praveen Kumar
+        Resume Website Generator
     </title>
 </head>
 
 <body>
-    <form id="resume_form" onsubmit="submitform()">
+    <form id="resume_form">
         <div id="click_div">
             <fieldset>
                 <h2>About</h2>
                 <div>
-                    <input type="text" id="name" />
-                    <input type="text" id="tagline" />
-                    <input type="text" id="mailid" />
-                    <input type="text" id="linkedin" />
-                    <input type="text" id="github" />
-                    <input type="text" id="portfolio" />
-                    <input type="text" id="twitter" />
-                    <input type="text" id="instagram" />
-                    <input type="text" id="pdflink" />
+                    <input type="text" id="name" placeholder="name" />
+                    <input type="text" id="tagline" placeholder="tagline" />
+                    <input type="text" id="mailid" placeholder="mailid" />
+                    <input type="text" id="linkedin" placeholder="linkedin" />
+                    <input type="text" id="github" placeholder="github" />
+                    <input type="text" id="portfolio" placeholder="portfolio" />
+                    <input type="text" id="twitter" placeholder="twitter" />
+                    <input type="text" id="instagram" placeholder="instagram" />
+                    <input type="text" id="pdflink" placeholder="pdflink" />
+                    <input type="file" id="photo" placeholder="photo" />
+                    <input type="hidden" id="style" value="./style.css" />
                 </div>
             </fieldset>
             <fieldset>
@@ -44,22 +48,22 @@
                     <div>
 
                         <button type="button" id="delete">Delete</button>
-                        <input type="text" id="skill[1][heading]" />
-                        <input type="text" id="skill[1][value]" />
+                        <input type="text" id="skill[1][heading]" placeholder="heading" />
+                        <input type="text" id="skill[1][value]" placeholder="skills" />
 
                     </div>
                 </div>
-                <button type="button" id="addskills">add skills</button>
+                <button type=" button" id="addskills">add skills</button>
             </fieldset>
 
             <fieldset>
                 <h2>Education</h2>
                 <div id="education">
                     <div>
-                        <input type="text" name="education[1][university]" />
-                        <input type="text" name="education[1][course]" />
-                        <input type="text" name="education[1][from]" />
-                        <input type="text" name="education[1][cgpa]" />
+                        <input type="text" name="education[1][university]" placeholder="university" />
+                        <input type="text" name="education[1][course]" placeholder="course" />
+                        <input type="text" name="education[1][from]" placeholder="from" />
+                        <input type="text" name="education[1][cgpa]" placeholder="cgpa (optional)" />
                     </div>
                 </div>
                 <button onclick="return addEducation()">add new education</button>
@@ -69,10 +73,10 @@
                 <h2>Experience</h2>
                 <div id="experience">
                     <div>
-                        <input type="text" name="experience[1][companyname]" />
-                        <input type="text" name="experience[1][role]" />
-                        <input type="text" name="experience[1][description]" />
-                        <input type="text" name="experience[1][duration]" />
+                        <input type="text" name="experience[1][companyname]" placeholder="comapny name" />
+                        <input type="text" name="experience[1][role]" placeholder="role" />
+                        <input type="text" name="experience[1][description]" placeholder="description" />
+                        <input type="text" name="experience[1][duration]" placeholder="duration" />
                     </div>
                 </div>
                 <button onclick="return addExperience()">add new experience</button>
@@ -82,18 +86,19 @@
                 <h2>projects</h2>
                 <div id="project">
                     <div>
-                        <input type="text" name="project[1][name]" />
-                        <input type="text" name="project[1][description]" />
+                        <input type="text" name="project[1][name]" placeholder="title" />
+                        <input type="text" name="project[1][description]" placeholder="description" />
                     </div>
                 </div>
                 <button onclick="return addProjects()">add new projects</button>
             </fieldset>
 
-            <button type="submit">Submit</button>
+            <button id="submitform" type="button">Submit</button>
+            <button id="previewresume" type="button">Preview</button>
         </div>
     </form>
 
-    <script src="/index.js">
+    <script type="module" src="./index.js">
 
 
     </script>
