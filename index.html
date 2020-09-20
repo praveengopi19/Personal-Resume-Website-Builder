@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
-    <link href="https://fonts.googleapis.com/css?family=Catamaran:200,300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,500,600,700" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-    <link href="./style.css" rel="stylesheet">
+    <link href="./index.css" rel="stylesheet">
     <script type="text/javascript" src="./jszip.min.js"></script>
     <title>
         Resume Website Generator
@@ -19,6 +19,7 @@
             <fieldset>
                 <h2>About</h2>
                 <div>
+                    <label>Name</label>
                     <input type="text" id="name" placeholder="name" />
                     <input type="text" id="tagline" placeholder="tagline" />
                     <input type="text" id="mailid" placeholder="mailid" />
@@ -35,41 +36,43 @@
             <fieldset>
                 <h2>Intro</h2>
                 <p>
-                    <label>
-                        summary
-                    </label>
-                    <textarea id="about"> </textarea>
+                    <textarea id="about" placeholder="summary"> </textarea>
                 </p>
             </fieldset>
             <fieldset>
                 <h2>Skills</h2>
                 <div id="skills">
-                    <div>
-                        <button type="button" id="delete">Delete</button>
+                    <div id="1" class="input_set">
+                        <button type="button" class="remove_icon"><i id="delete"
+                                class="fa fa-minus-circle "></i></button>
                         <input type="text" id="skill[1][heading]" placeholder="heading" />
                         <input type="text" id="skill[1][value]" placeholder="skills" />
                     </div>
                 </div>
-                <button type=" button" id="addskills">add skills</button>
+                <button type="button" id="addskills">add skills</button>
             </fieldset>
 
             <fieldset>
                 <h2>Education</h2>
                 <div id="education">
-                    <div>
+                    <div id="1" class="input_set">
+                        <button type="button" class="remove_icon"><i id="delete"
+                                class="fa fa-minus-circle "></i></button>
                         <input type="text" name="education[1][university]" placeholder="university" />
                         <input type="text" name="education[1][course]" placeholder="course" />
                         <input type="text" name="education[1][from]" placeholder="from" />
                         <input type="text" name="education[1][cgpa]" placeholder="cgpa (optional)" />
                     </div>
                 </div>
-                <button type=" button" id="addeduction">add new education</button>
+                <button type="button" id="addeduction">add new education</button>
             </fieldset>
 
             <fieldset>
                 <h2>Experience</h2>
                 <div id="experience">
-                    <div>
+                    <div id="1" class="input_set">
+                        <button type="button" class="remove_icon"><i id="delete"
+                                class="fa fa-minus-circle "></i></button>
                         <input type="text" name="experience[1][companyname]" placeholder="comapny name" />
                         <input type="text" name="experience[1][role]" placeholder="role" />
                         <textarea id="experience[1][description]" placeholder="description"></textarea>
@@ -81,13 +84,15 @@
 
             <fieldset>
                 <h2>projects</h2>
-                <div id="project">
-                    <div>
+                <div id="projects">
+                    <div id="1" class="input_set">
+                        <button type="button" class="remove_icon"><i id="delete"
+                                class="fa fa-minus-circle "></i></button>
                         <input type="text" name="project[1][name]" placeholder="title" />
                         <textarea id="project[1][description]" placeholder="description"></textarea>
                     </div>
                 </div>
-                <button type="button" id="addprojects">add new projects</button>
+                <button type="button" id="addproject">add new projects</button>
             </fieldset>
 
             <button id="submitform" type="button">Submit</button>

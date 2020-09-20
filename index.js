@@ -1,7 +1,7 @@
-let skills = 1;
-let experience = 1;
-let education = 1;
-let projects = 1;
+let skillid = 1;
+let experienceid = 1;
+let educationid = 1;
+let projectid = 1;
 
 var listobj = {
     skills: [1],
@@ -16,28 +16,123 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
 
     console.time("Time this");
 
+    // /&& event.target.nodeName === "BUTTON"
+    if (event.target.id === "delete") {
 
-    if (event.target.id === "delete" && event.target.nodeName === "BUTTON") {
-        console.log(event.target.parentNode.parentNode.id)
-        console.log(event.target.parentNode.remove())
+        let type = event.target.parentNode.parentNode.id
 
-        console.log("yes")
+        await listobj[type].splice(listobj[type].indexOf(Number(event.target.parentNode.id)), 1)
+
+        event.target.parentNode.remove()
+
         event.stopPropagation();
         event.preventDefault();
     }
 
     //addskills
 
-    else if (event.target.id === "addskills") {
-        skills = skills + 1;
+    /*else if (event.target.id === "addskills") {
+        skillid = skillid + 1;
         let template = `
-                <button type="button" id="delete">Delete</button>
-            <input type="text" name="skill[${skills}][heading]" />
-                <input type="text" name="skill[${skills}][value]" />
+                <button type="button" class="remove_icon"><i id="delete" class="fa fa-minus-circle "></i></button>
+            <input type="text" name="skill[${skillid}][heading]" />
+                <input type="text" name="skill[${skillid}][value]" />
                 
              `;
+
+        listobj.skills.push(skillid);
         let parent = document.getElementById("skills");
         let div = document.createElement("div");
+        div.setAttribute("id", skillid)
+        div.innerHTML = template;
+        parent.appendChild(div);
+
+        console.log(listobj.skills)
+
+        event.stopPropagation();
+        event.preventDefault();
+    } */
+
+    //obj add skills
+
+    else if (event.target.id === "addskills") {
+        skillid = skillid + 1;
+        let template = `
+                <button type="button" class="remove_icon"><i id="delete" class="fa fa-minus-circle "></i></button>
+            <input type="text" name="skill[${skillid}][heading]" />
+                <input type="text" name="skill[${skillid}][value]" />
+             `;
+        listobj.skills.push(skillid)
+        let parent = document.getElementById("skills");
+        let div = document.createElement("div");
+        div.setAttribute("id", skillid)
+        div.setAttribute("class", "input_set")
+        div.innerHTML = template;
+        parent.appendChild(div);
+
+        event.stopPropagation();
+        event.preventDefault();
+    }
+
+    //obj education
+
+    else if (event.target.id === "addeduction") {
+        educationid = educationid + 1;
+        let template = `
+        <button type="button" class="remove_icon"><i id="delete" class="fa fa-minus-circle "></i></button>
+        <input type="text" name="education[${educationid}][university]" placeholder="university" />
+        <input type="text" name="education[${educationid}][course]" placeholder="course" />
+        <input type="text" name="education[${educationid}][from]" placeholder="from" />
+        <input type="text" name="education[${educationid}][cgpa]" placeholder="cgpa (optional)" />
+             `;
+
+        listobj.education.push(educationid)
+        let parent = document.getElementById("education");
+        let div = document.createElement("div");
+        div.setAttribute("class", "input_set")
+        div.setAttribute("id", educationid)
+        div.innerHTML = template;
+        parent.appendChild(div);
+
+        event.stopPropagation();
+        event.preventDefault();
+    }
+
+    //obj experience
+
+    else if (event.target.id === "addexperience") {
+        experienceid = experienceid + 1;
+        let template = `
+                        <button type="button" class="remove_icon"><i id="delete" class="fa fa-minus-circle "></i></button>
+                        <input type="text" name="experience[${experienceid}][companyname]" placeholder="comapny name" />
+                        <input type="text" name="experience[${experienceid}][role]" placeholder="role" />
+                        <textarea id="experience[${experienceid}][description]" placeholder="description"></textarea>
+                        <input type="text" name="experience[${experienceid}][duration]" placeholder="duration" />
+             `;
+        listobj.experience.push(experienceid)
+        let parent = document.getElementById("experience");
+        let div = document.createElement("div");
+        div.setAttribute("id", experienceid)
+        div.setAttribute("class", "input_set")
+        div.innerHTML = template;
+        parent.appendChild(div);
+
+        event.stopPropagation();
+        event.preventDefault();
+    }
+
+    else if (event.target.id === "addproject") {
+        projectid = projectid + 1;
+        let template = `
+                        <button type="button" class="remove_icon"><i id="delete" class="fa fa-minus-circle "></i></button>
+                        <input type="text" name="project[${projectid}][name]" placeholder="title" />
+                        <textarea id="project[${projectid}][description]" placeholder="description"></textarea>
+              `;
+        listobj.projects.push(projectid)
+        let parent = document.getElementById("projects");
+        let div = document.createElement("div");
+        div.setAttribute("id", projectid)
+        div.setAttribute("class", "input_set")
         div.innerHTML = template;
         parent.appendChild(div);
 
@@ -66,7 +161,6 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
         }
 
         if (formvalues["photo"].files[0].size > 512000) {
-            console.log(formvalues["photo"].files[0].size / 1024)
             return false
         }
 
@@ -170,9 +264,9 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
                     <h4 class="heading">SKILLS</h4>`
 
         let skillcheck = false;
-        for (let i = 1; i <= skills; i++) {
-            let tempvalue = formvalues[`skill[${i}][value]`].value;
-            let tempheading = formvalues[`skill[${i}][heading]`].value;
+        for (let i = 0; i < listobj.skills.length; i++) {
+            let tempvalue = formvalues[`skill[${listobj.skills[i]}][value]`].value;
+            let tempheading = formvalues[`skill[${listobj.skills[i]}][heading]`].value;
             if (tempvalue && tempvalue.trim().length) {
                 skillcheck = true;
                 html = html + `
@@ -196,11 +290,11 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
                     <h4 class="heading">EDUCATION</h4>`
         let educationcheck = false;
 
-        for (let i = 1; i <= education; i++) {
-            let tempuniversity = formvalues[`education[${i}][university]`].value;
-            let tempcourse = formvalues[`education[${i}][course]`].value;
-            let tempfrom = formvalues[`education[${i}][from]`].value;
-            let tempcgpa = formvalues[`education[${i}][cgpa]`].value;
+        for (let i = 0; i < listobj.education.length; i++) {
+            let tempuniversity = formvalues[`education[${listobj.education[i]}][university]`].value;
+            let tempcourse = formvalues[`education[${listobj.education[i]}][course]`].value;
+            let tempfrom = formvalues[`education[${listobj.education[i]}][from]`].value;
+            let tempcgpa = formvalues[`education[${listobj.education[i]}][cgpa]`].value;
 
             if (tempuniversity && tempuniversity.trim().length) {
                 educationcheck = true;
@@ -209,9 +303,7 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
                         <div>
                             <strong>${tempuniversity}</strong>
                         </div>
-                    </div>
-                    <div class="category">
-                        ${tempcourse}
+                        <span>${tempcourse}</span>
                         <div>
                             <div class="duration">
                                 ${tempfrom}
@@ -238,11 +330,11 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
 
         let experiencecheck = false;
 
-        for (let i = 1; i <= experience; i++) {
-            let tempcompany = formvalues[`experience[${i}][companyname]`].value;
-            let temprole = formvalues[`experience[${i}][role]`].value;
-            let tempdescription = formvalues[`experience[${i}][description]`].value;
-            let tempduration = formvalues[`experience[${i}][duration]`].value;
+        for (let i = 0; i < listobj.experience.length; i++) {
+            let tempcompany = formvalues[`experience[${listobj.experience[i]}][companyname]`].value;
+            let temprole = formvalues[`experience[${listobj.experience[i]}][role]`].value;
+            let tempdescription = formvalues[`experience[${listobj.experience[i]}][description]`].value;
+            let tempduration = formvalues[`experience[${listobj.experience[i]}][duration]`].value;
 
             if (tempcompany && tempcompany.trim().length) {
                 experiencecheck = true;
@@ -276,9 +368,9 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
 
         let projectcheck = false;
 
-        for (let i = 1; i <= projects; i++) {
-            let tempname = formvalues[`project[${i}][name]`].value;
-            let tempdescription = formvalues[`project[${i}][description]`].value;
+        for (let i = 0; i < listobj.projects.length; i++) {
+            let tempname = formvalues[`project[${listobj.projects[i]}][name]`].value;
+            let tempdescription = formvalues[`project[${listobj.projects[i]}][description]`].value;
 
             if (tempname && tempname.trim().length) {
                 projectcheck = true;
