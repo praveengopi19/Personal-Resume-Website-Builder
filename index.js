@@ -34,7 +34,8 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
     /*else if (event.target.id === "addskills") {
         skillid = skillid + 1;
         let template = `
-                <button type="button" class="remove_icon"><i id="delete" class="fa fa-minus-circle "></i></button>
+                                        <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
+
             <input type="text" name="skill[${skillid}][heading]" />
                 <input type="text" name="skill[${skillid}][value]" />
                 
@@ -58,7 +59,7 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
     else if (event.target.id === "addskills") {
         skillid = skillid + 1;
         let template = `
-                <button type="button" class="remove_icon"><i id="delete" class="fa fa-minus-circle "></i></button>
+             <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
             <input type="text" name="skill[${skillid}][heading]" />
                 <input type="text" name="skill[${skillid}][value]" />
              `;
@@ -79,7 +80,7 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
     else if (event.target.id === "addeduction") {
         educationid = educationid + 1;
         let template = `
-        <button type="button" class="remove_icon"><i id="delete" class="fa fa-minus-circle "></i></button>
+        <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
         <input type="text" name="education[${educationid}][university]" placeholder="university" />
         <input type="text" name="education[${educationid}][course]" placeholder="course" />
         <input type="text" name="education[${educationid}][from]" placeholder="from" />
@@ -103,7 +104,7 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
     else if (event.target.id === "addexperience") {
         experienceid = experienceid + 1;
         let template = `
-                        <button type="button" class="remove_icon"><i id="delete" class="fa fa-minus-circle "></i></button>
+                        <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
                         <input type="text" name="experience[${experienceid}][companyname]" placeholder="comapny name" />
                         <input type="text" name="experience[${experienceid}][role]" placeholder="role" />
                         <textarea id="experience[${experienceid}][description]" placeholder="description"></textarea>
@@ -124,7 +125,7 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
     else if (event.target.id === "addproject") {
         projectid = projectid + 1;
         let template = `
-                        <button type="button" class="remove_icon"><i id="delete" class="fa fa-minus-circle "></i></button>
+                        <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
                         <input type="text" name="project[${projectid}][name]" placeholder="title" />
                         <textarea id="project[${projectid}][description]" placeholder="description"></textarea>
               `;

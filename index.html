@@ -43,9 +43,12 @@
                 <h2>Skills</h2>
                 <div id="skills">
                     <div id="1" class="input_set">
-                        <button type="button" class="remove_icon"><i id="delete"
-                                class="fa fa-minus-circle "></i></button>
-                        <input type="text" id="skill[1][heading]" placeholder="heading" />
+                        <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
+
+                        <div style="position: relative;">
+                            <input type="text" id="skill[1][heading]" required />
+                            <label>Heading</label>
+                        </div>
                         <input type="text" id="skill[1][value]" placeholder="skills" />
                     </div>
                 </div>
@@ -56,8 +59,9 @@
                 <h2>Education</h2>
                 <div id="education">
                     <div id="1" class="input_set">
-                        <button type="button" class="remove_icon"><i id="delete"
-                                class="fa fa-minus-circle "></i></button>
+                        <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
+
+
                         <input type="text" name="education[1][university]" placeholder="university" />
                         <input type="text" name="education[1][course]" placeholder="course" />
                         <input type="text" name="education[1][from]" placeholder="from" />
@@ -71,8 +75,8 @@
                 <h2>Experience</h2>
                 <div id="experience">
                     <div id="1" class="input_set">
-                        <button type="button" class="remove_icon"><i id="delete"
-                                class="fa fa-minus-circle "></i></button>
+                        <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
+
                         <input type="text" name="experience[1][companyname]" placeholder="comapny name" />
                         <input type="text" name="experience[1][role]" placeholder="role" />
                         <textarea id="experience[1][description]" placeholder="description"></textarea>
@@ -86,8 +90,8 @@
                 <h2>projects</h2>
                 <div id="projects">
                     <div id="1" class="input_set">
-                        <button type="button" class="remove_icon"><i id="delete"
-                                class="fa fa-minus-circle "></i></button>
+                        <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
+
                         <input type="text" name="project[1][name]" placeholder="title" />
                         <textarea id="project[1][description]" placeholder="description"></textarea>
                     </div>
