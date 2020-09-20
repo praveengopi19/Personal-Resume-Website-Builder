@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css?family=Catamaran:200,300,400,500,600,700" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link href="./style.css" rel="stylesheet">
-    <script type="text/javascript" src="./jszip.js"></script>
     <script type="text/javascript" src="./jszip.min.js"></script>
     <title>
         Resume Website Generator
@@ -46,11 +45,9 @@
                 <h2>Skills</h2>
                 <div id="skills">
                     <div>
-
                         <button type="button" id="delete">Delete</button>
                         <input type="text" id="skill[1][heading]" placeholder="heading" />
                         <input type="text" id="skill[1][value]" placeholder="skills" />
-
                     </div>
                 </div>
                 <button type=" button" id="addskills">add skills</button>
@@ -66,7 +63,7 @@
                         <input type="text" name="education[1][cgpa]" placeholder="cgpa (optional)" />
                     </div>
                 </div>
-                <button onclick="return addEducation()">add new education</button>
+                <button type=" button" id="addeduction">add new education</button>
             </fieldset>
 
             <fieldset>
@@ -75,11 +72,11 @@
                     <div>
                         <input type="text" name="experience[1][companyname]" placeholder="comapny name" />
                         <input type="text" name="experience[1][role]" placeholder="role" />
-                        <input type="text" name="experience[1][description]" placeholder="description" />
+                        <textarea id="experience[1][description]" placeholder="description"></textarea>
                         <input type="text" name="experience[1][duration]" placeholder="duration" />
                     </div>
                 </div>
-                <button onclick="return addExperience()">add new experience</button>
+                <button type="button" id="addexperience">add new experience</button>
             </fieldset>
 
             <fieldset>
@@ -87,10 +84,10 @@
                 <div id="project">
                     <div>
                         <input type="text" name="project[1][name]" placeholder="title" />
-                        <input type="text" name="project[1][description]" placeholder="description" />
+                        <textarea id="project[1][description]" placeholder="description"></textarea>
                     </div>
                 </div>
-                <button onclick="return addProjects()">add new projects</button>
+                <button type="button" id="addprojects">add new projects</button>
             </fieldset>
 
             <button id="submitform" type="button">Submit</button>
