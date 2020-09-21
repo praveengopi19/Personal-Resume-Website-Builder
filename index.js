@@ -187,7 +187,7 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
     <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
     <link href="https://fonts.googleapis.com/css?family=Catamaran:200,300,400,500,600,700" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-    <link href="./style.css" rel="stylesheet">`
+    <link href="style.css" rel="stylesheet">`
 
             let img = new Image()
             img.src = window.URL.createObjectURL(formvalues["photo"].files[0])
@@ -204,7 +204,7 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
     <body>
         <div class="left">
             <div class="leftbg"
-            style="background : url(${event.target.id === "submitform" ? `./${formvalues["photo"].files[0].name}` : `${img.src}`}) center center no-repeat !important; background-size: cover !important ">
+            style="background : url(${event.target.id === "submitform" ? `${formvalues["photo"].files[0].name}` : `${img.src}`}) center center no-repeat !important; background-size: cover !important ">
             </div>
             <div class="left_inner">
                 <div class="left_info">
