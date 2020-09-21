@@ -201,6 +201,8 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
             return false
         }
 
+        console.log(listobj)
+
         let html = `<!DOCTYPE html>
 <html>
 
@@ -320,6 +322,7 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
         if (skillcheck == false) {
             html = html.split("<!-- Skills -->")[0];
         }
+
 
         html = html + `
         <!-- Education -->
