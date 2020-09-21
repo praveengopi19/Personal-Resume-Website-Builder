@@ -1,0 +1,236 @@
+html,
+body {
+    margin            : 0;
+    padding           : 0;
+    font-family       : 'Open Sans';
+    font-weight       : 400;
+    background-color  : #E6EAF9;
+    box-sizing        : border-box;
+    scroll-behavior   : smooth;
+    scrollbar-width   : none;
+    -ms-overflow-style: none;
+    overflow          : auto;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+h2,
+h4 {
+    color             : #2874F0;
+    margin-block-start: 1em;
+    margin-block-end  : 0.2em;
+    margin-left       : 2%;
+}
+
+.subheader {
+    font-weight: 600;
+    padding    : 0 !important;
+    margin     : 10px 0;
+    color      : #303030;
+}
+
+li {
+    padding: 3px 0 5px 3px;
+}
+
+ul {
+    color     : #63738b;
+    margin    : 10px 0;
+    list-style: none;
+    padding   : 0 3%;
+}
+
+.header {
+    margin-block-start: 1em;
+    margin-block-end  : 1em;
+
+}
+
+section,
+fieldset {
+    overflow        : auto;
+    background-color: white;
+    min-inline-size : none;
+    border-radius   : 10px;
+    margin          : 1.5rem 2rem;
+    border          : 0;
+}
+
+input {
+    font-size       : 16px;
+    font-family     : 'Open Sans';
+    width           : 93%;
+    display         : block;
+    background-color: transparent;
+    border          : 0;
+    margin          : 50px 3%;
+    outline         : none;
+    height          : 24px;
+    line-height     : 24px;
+    border-bottom   : 2px solid #ccc;
+}
+
+
+
+input:focus {
+    border-bottom: 2px solid #335DF1;
+    transition   : 0.4s;
+}
+
+label {
+    color             : #878787;
+    font-size         : 14px;
+    font-weight       : normal;
+    position          : absolute;
+    pointer-events    : none;
+    left              : 3.5%;
+    top               : 0px;
+    transition        : 0.2s ease all;
+    -moz-transition   : 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+input:focus~label,
+input:valid~label,
+textarea:focus~label,
+textarea:valid~label {
+    left      : 3%;
+    top       : -25px;
+    font-size : 12px;
+    transition: 0.3s;
+}
+
+
+input[type="file"] {
+    border     : 0;
+    height     : 40px;
+    line-height: 24px;
+    margin     : 50px 3% 20px 3%;
+    cursor     : pointer !important;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+    font-weight  : 600;
+    border-radius: 2px;
+    border       : 0;
+    background   : #335DF1;
+    padding      : 0 13px;
+    height       : 30px;
+    margin-bottom: 10px;
+    margin-top   : 10px;
+    color        : white;
+    cursor       : pointer !important;
+}
+
+input[type="file"]~label,
+input[type="file"]:valid~label,
+input[type="file"]:focus~label {
+    font-size: 14px !important;
+    left     : 3%;
+    top      : -25px;
+}
+
+.input_container {
+    position: relative;
+}
+
+textarea {
+    font-size       : 16px;
+    width           : 93%;
+    display         : block;
+    background-color: transparent;
+    border          : 0;
+    margin          : 50px 3%;
+    outline         : none;
+    height          : 24px;
+    line-height     : 24px;
+    border-bottom   : 2px solid #ccc;
+    min-height      : 13em;
+}
+
+.input_set {
+    margin       : 30px 0;
+    position     : relative;
+    border       : 3px solid #F5F7FF;
+    border-radius: 10px;
+}
+
+.remove_icon {
+    background-color: #fff;
+    border          : none;
+    position        : absolute;
+    top             : -19px;
+    right           : 33px;
+    font-size       : 30px;
+    color           : red
+}
+
+.add_button {
+    display         : block;
+    background-color: transparent;
+    color           : #ff9f00;
+    border          : 2px solid #ff9f00;
+    border-radius   : 5px;
+    padding         : 10px 20px;
+    margin          : 0 auto 10px;
+}
+
+.button_div {
+
+    text-align: center;
+}
+
+.submit_button {
+    display         : inline-block;
+    background-color: #3D73DD;
+    color           : white;
+    border          : 0;
+    border-radius   : 5px;
+    padding         : 10px 30px;
+    margin          : 0 0 0 auto;
+}
+
+
+.preview_button {
+    display         : inline-block;
+    border          : 1px solid #3D73DD;
+    color           : #3D73DD;
+    background-color: white;
+    border-radius   : 5px;
+    padding         : 10px 30px;
+    margin          : 0 auto 0 1rem;
+}
+
+sup {
+    color    : red;
+    font-size: 12px;
+    position : relative;
+    top      : 4px;
+}
+
+small {
+    display      : none;
+    color        : red;
+    font-size    : 15px;
+    text-align   : center;
+    margin-bottom: 20px;
+}
+
+footer {
+    margin     : 25px 0 30px 0;
+    font-size  : 16px;
+    text-align : center;
+    font-weight: 600;
+    color      : #63738b
+}
+
+.portfolio_link {
+    color: #3D73DD;
+}
+
+button {
+    font-weight: 600;
+    cursor     : pointer;
+}
