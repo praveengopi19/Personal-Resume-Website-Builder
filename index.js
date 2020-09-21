@@ -14,6 +14,7 @@ let formvalues = document.getElementById("resume_form").elements;
 
 document.getElementById("click_div").addEventListener("click", async (event) => {
 
+    // try {
     console.time("Time this");
 
     // /&& event.target.nodeName === "BUTTON"
@@ -35,21 +36,21 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
         skillid = skillid + 1;
         let template = `
                                         <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
-
+ 
             <input type="text" name="skill[${skillid}][heading]" />
                 <input type="text" name="skill[${skillid}][value]" />
                 
              `;
-
+ 
         listobj.skills.push(skillid);
         let parent = document.getElementById("skills");
         let div = document.createElement("div");
         div.setAttribute("id", skillid)
         div.innerHTML = template;
         parent.appendChild(div);
-
+ 
         console.log(listobj.skills)
-
+ 
         event.stopPropagation();
         event.preventDefault();
     } */
@@ -184,24 +185,24 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
 
     else if (event.target.id === "submitform" || event.target.id === "previewresume") {
 
-        let error = false
+        let error = document.getElementsByTagName("small")
 
         if (!formvalues["photo"].files[0]) {
+            error[0].style.display = "block"
             return false
         }
 
         let extension = formvalues["photo"].files[0].type.split('/').pop().toLowerCase()
 
         if (extension !== "jpeg" && extension !== "gif" && extension !== "png" && extension !== "jpg") {
-            console.log(extension)
+            alert("Invalid File format supported formats are jpeg, gif, png, jpg ")
             return false
         }
 
         if (formvalues["photo"].files[0].size > 512000) {
+            alert("Image size should be less than 500kb")
             return false
         }
-
-        console.log(listobj)
 
         let html = `<!DOCTYPE html>
 <html>
@@ -215,6 +216,11 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
 
         let img = new Image()
         img.src = window.URL.createObjectURL(formvalues["photo"].files[0])
+
+        if (!formvalues["name"].value.trim().length || !formvalues["name"].value.trim()) {
+            error[0].style.display = "block"
+            return false
+        }
 
         html = html + `
         <title>Resume | ${formvalues["name"].value}</title>
@@ -240,6 +246,10 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
                 ${formvalues["tagline"].value}
             </div>`
         }
+        else {
+            error[0].style.display = "block"
+            return false
+        }
 
         html = html + `
                     <div class="links">`
@@ -249,6 +259,10 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
             <a href="mailto:${formvalues["mailid"].value}" target="_blank">
                 <i class="fa fa-envelope"></i>
             </a>`
+        }
+        else {
+            error[0].style.display = "block"
+            return false
         }
 
         if (formvalues["linkedin"].value && formvalues["linkedin"].value.trim().length) {
@@ -290,55 +304,55 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
         if (formvalues["about"].value && formvalues["about"].value.trim().length) {
             html = html + `
             <div class="content">
-            <h4 class="heading">INTRO</h4>
-            <p>
-            ${formvalues["about"].value.trim().replace(/\n/g, "</p>\n<p>")}
-            </p>
-        </div>`
-        }
-
-        html = html + `
-        <!-- Skills -->
-        <div class="content">
-                    <h4 class="heading">SKILLS</h4>`
-
-        let skillcheck = false;
-        for (let i = 0; i < listobj.skills.length; i++) {
-            let tempvalue = formvalues[`skill[${listobj.skills[i]}][value]`].value;
-            let tempheading = formvalues[`skill[${listobj.skills[i]}][heading]`].value;
-            if (tempvalue && tempvalue.trim().length) {
-                skillcheck = true;
-                html = html + `
-                <div class="category">
-                ${tempheading && tempheading.trim().length ? `<strong> ${tempheading} : </strong>` : ""}
-                <span>${tempvalue}</span>
+                <h4 class="heading">INTRO</h4>
+                <p>
+                ${formvalues["about"].value.trim().replace(/\n/g, "</p>\n<p>")}
+                </p>
             </div>`
+        }
+
+        if (listobj.skills.length > 0) {
+            html = html + `
+            <!-- Skills -->
+            <div class="content">
+                        <h4 class="heading">SKILLS</h4>`
+
+            for (let i = 0; i < listobj.skills.length; i++) {
+                let tempvalue = formvalues[`skill[${listobj.skills[i]}][value]`].value.trim();
+                let tempheading = formvalues[`skill[${listobj.skills[i]}][heading]`].value.trim();
+                if (tempvalue && tempvalue.length) {
+                    html = html + `
+                    <div class="category">
+                    ${tempheading && tempheading.length ? `<strong> ${tempheading} : </strong>` : ""}
+                        <span>${tempvalue}</span>
+                    </div>`
+                }
+                else {
+                    error[0].style.display = "block"
+                    return false
+                }
             }
-        }
 
-        html = html + `
-        </div>`
+            html = html + `
+            </div>`
 
-        if (skillcheck == false) {
-            html = html.split("<!-- Skills -->")[0];
         }
 
 
-        html = html + `
-        <!-- Education -->
-        <div class="content">
-                    <h4 class="heading">EDUCATION</h4>`
-        let educationcheck = false;
+        if (listobj.education.length > 0) {
+            html = html + `
+            <!-- Education -->
+            <div class="content">
+                <h4 class="heading">EDUCATION</h4>`
 
-        for (let i = 0; i < listobj.education.length; i++) {
-            let tempuniversity = formvalues[`education[${listobj.education[i]}][university]`].value;
-            let tempcourse = formvalues[`education[${listobj.education[i]}][course]`].value;
-            let tempfrom = formvalues[`education[${listobj.education[i]}][from]`].value;
-            let tempcgpa = formvalues[`education[${listobj.education[i]}][cgpa]`].value;
+            for (let i = 0; i < listobj.education.length; i++) {
+                let tempuniversity = formvalues[`education[${listobj.education[i]}][university]`].value.trim();
+                let tempcourse = formvalues[`education[${listobj.education[i]}][course]`].value.trim();
+                let tempfrom = formvalues[`education[${listobj.education[i]}][from]`].value.trim();
+                let tempcgpa = formvalues[`education[${listobj.education[i]}][cgpa]`].value.trim();
 
-            if (tempuniversity && tempuniversity.trim().length) {
-                educationcheck = true;
-                html = html + `
+                if (tempuniversity && tempuniversity.length && tempcourse && tempcourse.length && tempfrom && tempfrom.length) {
+                    html = html + `
                     <div class="category">
                         <div>
                             <strong>${tempuniversity}</strong>
@@ -353,32 +367,34 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
                             </div>
                         </div>
                     </div>`
+                }
+                else {
+                    error[0].style.display = "block"
+                    return false
+                }
             }
+
+            html = html + `
+            </div>`;
+
         }
 
-        html = html + `
-        </div>`;
+        if (listobj.experience.length > 0) {
 
-        if (educationcheck == false) {
-            html = html.split("<!-- Education -->")[0];
-        }
-
-        html = html + `
+            html = html + `
         <!-- Experience -->
         <div class="content">
                     <h4 class="heading">EXPERIENCE</h4>`
 
-        let experiencecheck = false;
 
-        for (let i = 0; i < listobj.experience.length; i++) {
-            let tempcompany = formvalues[`experience[${listobj.experience[i]}][companyname]`].value;
-            let temprole = formvalues[`experience[${listobj.experience[i]}][role]`].value;
-            let tempdescription = formvalues[`experience[${listobj.experience[i]}][description]`].value.trim().replace(/\n/g, "</p>\n<p>");
-            let tempduration = formvalues[`experience[${listobj.experience[i]}][duration]`].value;
+            for (let i = 0; i < listobj.experience.length; i++) {
+                let tempcompany = formvalues[`experience[${listobj.experience[i]}][companyname]`].value.trim();
+                let temprole = formvalues[`experience[${listobj.experience[i]}][role]`].value.trim();
+                let tempdescription = formvalues[`experience[${listobj.experience[i]}][description]`].value.trim().replace(/\n/g, "</p>\n<p>");
+                let tempduration = formvalues[`experience[${listobj.experience[i]}][duration]`].value.trim();
 
-            if (tempcompany && tempcompany.trim().length) {
-                experiencecheck = true;
-                html = html + `
+                if (tempcompany && tempcompany.length && temprole && temprole.length && tempduration && tempduration.length) {
+                    html = html + `
                     <div class="category">
                         <div>
                             <strong>${tempcompany}</strong>
@@ -391,46 +407,55 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
                         </div>
                         ${tempdescription}
                     </div>`
+                }
+                else {
+                    error[0].style.display = "block"
+                    return false
+                }
             }
-        }
 
-        html = html + `
+            html = html + `
         </div>`;
-
-        if (experiencecheck == false) {
-            html = html.split("<!-- Experience -->")[0];
         }
 
-        html = html + `
+        if (listobj.projects.length > 0) {
+            html = html + `
         <!-- Projects -->
         <div class="content">
                     <h4 class="heading">PROJECTS</h4>`
 
-        let projectcheck = false;
+            let projectcheck = false;
 
-        for (let i = 0; i < listobj.projects.length; i++) {
-            let tempname = formvalues[`project[${listobj.projects[i]}][name]`].value;
-            let tempdescription = formvalues[`project[${listobj.projects[i]}][description]`].value.trim().replace(/\n/g, "</p>\n<p>");
+            for (let i = 0; i < listobj.projects.length; i++) {
+                let tempname = formvalues[`project[${listobj.projects[i]}][name]`].value.trim();
+                let tempdescription = formvalues[`project[${listobj.projects[i]}][description]`].value.trim().replace(/\n/g, "</p>\n<p>");
 
-            if (tempname && tempname.trim().length) {
-                projectcheck = true;
-                html = html +
-                    `<div class="category">
-                    <div class="subheading">
-                        <strong>${tempname}</strong>
-                    </div>
-                        <p>${tempdescription}</p>
-                    </div>`
+                if (tempname && tempname.length) {
+                    projectcheck = true;
+                    html = html +
+                        `<div class="category">
+                            <div class="subheading">
+                                <strong>${tempname}</strong>
+                            </div>
+                            <p>${tempdescription}</p>
+                        </div>`
+                }
+                else {
+                    error[0].style.display = "block"
+                    return false
+                }
             }
-        }
 
-        html = html + `
+            html = html + `
         </div>`;
-
-        if (projectcheck == false) {
-            html = html.split("<!-- Projects -->")[0];
         }
 
+        if (formvalues['pdflink'].value && formvalues['pdflink'].value.trim()) {
+            html = html + `
+            <a class="pdf_link" href="${formvalues['pdflink'].value.trim()}">
+            	GRAB A PDF OF MY FULL RESUME
+            </a>`
+        }
 
         html = html + `
             </div>
@@ -439,6 +464,9 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
     </html>`
 
         //preview resume && submit form
+        if (error[0].style.display === "block") {
+            error[0].style.display = "none"
+        }
 
         if (event.target.id === "previewresume") {
             localStorage.setItem("resume_online", JSON.stringify(html));
@@ -477,7 +505,10 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
         event.stopPropagation();
         event.preventDefault();
     }
-
+    // }
+    // catch (e) {
+    //     return false
+    // }
     console.timeEnd("Time this");
 
 })

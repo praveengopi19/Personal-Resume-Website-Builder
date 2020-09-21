@@ -9,11 +9,25 @@
     <link href="./index.css" rel="stylesheet">
     <script type="text/javascript" src="./jszip.min.js"></script>
     <title>
-        Resume Website Generator
+        Personal resume website builder
     </title>
 </head>
 
 <body>
+    <section>
+        <h2 align="center">Personal resume website builder</h2>
+        <div class="header">
+            <ul>
+                <li class="subheader">Few note!</li>
+                <li>- Label indicated with <sup>*</sup> are required fields</li>
+                <li>- Upload the image size which less than 500kb (Greater the image size longer the page loading of
+                    your
+                    Resume)
+                    website</li>
+                <li>- Sample resume image with marked lables</li>
+            </ul>
+        </div>
+    </section>
     <form id="resume_form">
         <div id="click_div">
             <fieldset>
@@ -25,7 +39,7 @@
                     </div>
                     <div class="input_container">
                         <input type="text" id="tagline" required />
-                        <label>Tagline</label>
+                        <label>Tagline <sup>*</sup></label>
                     </div>
                     <div class="input_container">
                         <input type="text" id="mailid" required />
@@ -57,7 +71,7 @@
                     </div>
                     <div class="input_container">
                         <input type="file" id="photo" required />
-                        <label>Photo of Yours</label>
+                        <label>Photo of Yours <sup>*</sup></label>
                     </div>
                 </div>
             </fieldset>
@@ -80,7 +94,7 @@
                         </div>
                         <div class="input_container">
                             <input type="text" id="skill[1][value]" required />
-                            <label>Skills</label>
+                            <label>Skills <sup>*</sup></label>
                         </div>
                     </div>
                 </div>
@@ -94,15 +108,15 @@
                         <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
                         <div class="input_container">
                             <input type="text" name="education[1][university]" required />
-                            <label>University</label>
+                            <label>University <sup>*</sup></label>
                         </div>
                         <div class="input_container">
                             <input type="text" name="education[1][course]" required />
-                            <label>Course</label>
+                            <label>Course <sup>*</sup></label>
                         </div>
                         <div class="input_container">
                             <input type="text" name="education[1][from]" required />
-                            <label>Duration</label>
+                            <label>Duration <sup>*</sup></label>
                         </div>
                         <div class="input_container">
                             <input type="text" name="education[1][cgpa]" required />
@@ -120,11 +134,11 @@
                         <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
                         <div class="input_container">
                             <input type="text" name="experience[1][companyname]" required />
-                            <label>Company Name</label>
+                            <label>Company Name <sup>*</sup></label>
                         </div>
                         <div class="input_container">
                             <input type="text" name="experience[1][role]" required />
-                            <label>Role</label>
+                            <label>Role <sup>*</sup></label>
                         </div>
                         <div class="input_container">
                             <textarea id="experience[1][description]" required></textarea>
@@ -132,7 +146,7 @@
                         </div>
                         <div class="input_container">
                             <input type="text" name="experience[1][duration]" required />
-                            <label>Duration</label>
+                            <label>Duration <sup>*</sup></label>
                         </div>
                     </div>
                 </div>
@@ -140,13 +154,13 @@
             </fieldset>
 
             <fieldset>
-                <h2>projects</h2>
+                <h2>Projects</h2>
                 <div id="projects">
                     <div id="1" class="input_set">
                         <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
                         <div class="input_container">
                             <input type="text" name="project[1][name]" required />
-                            <label>Title</label>
+                            <label>Title <sup>*</sup></label>
                         </div>
                         <div class="input_container">
                             <textarea id="project[1][description]" required></textarea>
@@ -156,11 +170,17 @@
                 </div>
                 <button type="button" id="addproject" class="add_button">Add Projects</button>
             </fieldset>
-
-            <button id="submitform" class="submit_button" type="button">Submit</button>
-            <button id="previewresume" type="button">Preview</button>
+            <small><i class="fa fa-warning"></i> Please fill all the required fields </small>
+            <div class="button_div">
+                <button id="submitform" class="submit_button" type="button">Submit</button>
+                <button id="previewresume" class="preview_button" type="button">Preview</button>
+            </div>
         </div>
     </form>
+    <footer>
+        <p>Made With ❤ By <a class="portfolio_link" href="https://praveengopi19.github.io" target="_blank">Praveen
+                Kumar</a></p>
+    </footer>
 
     <script type="module" src="./index.js">
 
