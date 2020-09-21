@@ -30,30 +30,6 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
         event.preventDefault();
     }
 
-    //addskills
-
-    /*else if (event.target.id === "addskills") {
-        skillid = skillid + 1;
-        let template = `
-                                        <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
- 
-            <input type="text" name="skill[${skillid}][heading]" />
-                <input type="text" name="skill[${skillid}][value]" />
-                
-             `;
- 
-        listobj.skills.push(skillid);
-        let parent = document.getElementById("skills");
-        let div = document.createElement("div");
-        div.setAttribute("id", skillid)
-        div.innerHTML = template;
-        parent.appendChild(div);
- 
-        console.log(listobj.skills)
- 
-        event.stopPropagation();
-        event.preventDefault();
-    } */
 
     //obj add skills
 
@@ -67,7 +43,7 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
                 </div>
                 <div class="input_container">
                     <input type="text" name="skill[${skillid}][value]" required />
-                    <label>Skills</label>
+                    <label>Skills <sup>*</sup></label>
                 </div>
              `;
         listobj.skills.push(skillid)
@@ -90,15 +66,15 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
         <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
         <div class="input_container">
             <input type="text" name="education[${educationid}][university]" required />
-            <label>University</label>
+            <label>University <sup>*</sup></label>
         </div>
         <div class="input_container">
             <input type="text" name="education[${educationid}][course]" required />
-            <label>Course</label>
+            <label>Course <sup>*</sup></label>
         </div>
         <div class="input_container">
             <input type="text" name="education[${educationid}][from]" required />
-            <label>Duration</label>
+            <label>Duration <sup>*</sup></label>
         </div>
         <div class="input_container">
             <input type="text" name="education[${educationid}][cgpa]" required />
@@ -126,11 +102,11 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
         <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
         <div class="input_container">
             <input type="text" name="experience[${experienceid}][companyname]" required />
-            <label>Company Name</label>
+            <label>Company Name <sup>*</sup></label>
         </div>
         <div class="input_container">
             <input type="text" name="experience[${experienceid}][role]" required />
-            <label>Role</label>
+            <label>Role <sup>*</sup></label>
         </div>
         <div class="input_container">
             <textarea id="experience[${experienceid}][description]" required></textarea>
@@ -138,7 +114,7 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
         </div>
         <div class="input_container">
             <input type="text" name="experience[${experienceid}][duration]" required />
-            <label>Duration</label>
+            <label>Duration <sup>*</sup></label>
         </div>
         `;
         listobj.experience.push(experienceid)
@@ -159,7 +135,7 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
         <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
         <div class="input_container">
             <input type="text" name="project[${projectid}][name]" required />
-            <label>Title</label>
+            <label>Title <sup>*</sup></label>
         </div>
         <div class="input_container">
             <textarea id="project[${projectid}][description]" required></textarea>
@@ -361,8 +337,8 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
                         <div>
                             <div class="duration">
                                 ${tempfrom}
-                                ${tempcgpa && tempcgpa.trim().length ? `<div style="float: right;">
-                                ${tempcgpa}
+                                ${tempcgpa && tempcgpa.trim().length ? `<div class="cgpa">
+                                CGPA: ${tempcgpa}
                             </div>`: ``}
                             </div>
                         </div>
@@ -403,7 +379,7 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
                             <strong>${temprole}</strong>
                         </div>
                         <div class="duration">
-                            <strong>${tempduration}</strong>
+                            ${tempduration}
                         </div>
                         ${tempdescription}
                     </div>`
@@ -484,13 +460,6 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
 
             let content = await zip.generateAsync({ type: "base64" });
 
-            // let element = document.createElement('a');
-            // element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(html))
-            // element.setAttribute('download', 'index.html')
-            // element.style.display = 'none'
-            // document.body.appendChild(element)
-            // element.click();
-            // document.body.removeChild(element)
 
             let element = document.createElement('a');
             element.setAttribute('href', "data:application/zip;base64," + content)
@@ -512,5 +481,12 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
     console.timeEnd("Time this");
 
 })
+
+
+window.addEventListener("unload", (event) => {
+    localStorage.clear("resume_online")
+    event.stopPropagation();
+    event.preventDefault();
+});
 
 
