@@ -1,8 +1,10 @@
+//id's to identify the block for deletion and updating of listobj for iteration
 let skillid = 1;
 let experienceid = 1;
 let educationid = 1;
 let projectid = 1;
 
+//to hold to values and to determine the block existence (i.e., skills block has any value or not )
 var listobj = {
     skills: [1],
     education: [1],
@@ -16,7 +18,6 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
 
     try {
 
-        // /&& event.target.nodeName === "BUTTON"
         if (event.target.id === "delete") {
 
             let type = event.target.parentNode.parentNode.id
@@ -29,13 +30,11 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
             event.preventDefault();
         }
 
-
-        //obj add skills
-
+        //adding skills template
         else if (event.target.id === "addskills") {
             skillid = skillid + 1;
             let template = `
-             <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
+                <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
                 <div class="input_container">
                     <input type="text" name="skill[${skillid}][heading]" required />
                     <label>Heading</label>
@@ -57,28 +56,27 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
             event.preventDefault();
         }
 
-        //obj education
-
+        //adding education template
         else if (event.target.id === "addeduction") {
             educationid = educationid + 1;
             let template = `
-        <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
-        <div class="input_container">
-            <input type="text" name="education[${educationid}][university]" required />
-            <label>University <sup>*</sup></label>
-        </div>
-        <div class="input_container">
-            <input type="text" name="education[${educationid}][course]" required />
-            <label>Course <sup>*</sup></label>
-        </div>
-        <div class="input_container">
-            <input type="text" name="education[${educationid}][from]" required />
-            <label>Duration <sup>*</sup></label>
-        </div>
-        <div class="input_container">
-            <input type="text" name="education[${educationid}][cgpa]" required />
-            <label>CGPA</label>
-        </div>
+                <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
+                <div class="input_container">
+                    <input type="text" name="education[${educationid}][university]" required />
+                    <label>University <sup>*</sup></label>
+                </div>
+                <div class="input_container">
+                    <input type="text" name="education[${educationid}][course]" required />
+                    <label>Course <sup>*</sup></label>
+                </div>
+                <div class="input_container">
+                    <input type="text" name="education[${educationid}][from]" required />
+                    <label>Duration <sup>*</sup></label>
+                </div>
+                <div class="input_container">
+                    <input type="text" name="education[${educationid}][cgpa]" required />
+                    <label>CGPA</label>
+                </div>
          `;
 
             listobj.education.push(educationid)
@@ -93,28 +91,27 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
             event.preventDefault();
         }
 
-        //obj experience
-
+        //adding experience template
         else if (event.target.id === "addexperience") {
             experienceid = experienceid + 1;
             let template = `
-        <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
-        <div class="input_container">
-            <input type="text" name="experience[${experienceid}][companyname]" required />
-            <label>Company Name <sup>*</sup></label>
-        </div>
-        <div class="input_container">
-            <input type="text" name="experience[${experienceid}][role]" required />
-            <label>Role <sup>*</sup></label>
-        </div>
-        <div class="input_container">
-            <textarea id="experience[${experienceid}][description]" required></textarea>
-            <label>Description</label>
-        </div>
-        <div class="input_container">
-            <input type="text" name="experience[${experienceid}][duration]" required />
-            <label>Duration <sup>*</sup></label>
-        </div>
+                <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
+                <div class="input_container">
+                    <input type="text" name="experience[${experienceid}][companyname]" required />
+                    <label>Company Name <sup>*</sup></label>
+                </div>
+                <div class="input_container">
+                    <input type="text" name="experience[${experienceid}][role]" required />
+                    <label>Role <sup>*</sup></label>
+                </div>
+                <div class="input_container">
+                    <textarea id="experience[${experienceid}][description]" required></textarea>
+                    <label>Description</label>
+                </div>
+                <div class="input_container">
+                    <input type="text" name="experience[${experienceid}][duration]" required />
+                    <label>Duration <sup>*</sup></label>
+                </div>
         `;
             listobj.experience.push(experienceid)
             let parent = document.getElementById("experience");
@@ -128,19 +125,20 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
             event.preventDefault();
         }
 
+        //adding project template
         else if (event.target.id === "addproject") {
             projectid = projectid + 1;
             let template = `
-        <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
-        <div class="input_container">
-            <input type="text" name="project[${projectid}][name]" required />
-            <label>Title <sup>*</sup></label>
-        </div>
-        <div class="input_container">
-            <textarea id="project[${projectid}][description]" required></textarea>
-            <label>Description</label>
-        </div>
-        `;
+                <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
+                <div class="input_container">
+                    <input type="text" name="project[${projectid}][name]" required />
+                    <label>Title <sup>*</sup></label>
+                </div>
+                <div class="input_container">
+                    <textarea id="project[${projectid}][description]" required></textarea>
+                    <label>Description</label>
+                </div>
+            `;
             listobj.projects.push(projectid)
             let parent = document.getElementById("projects");
             let div = document.createElement("div");
@@ -156,8 +154,7 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
 
 
 
-        //Submit
-
+        //Submit or preview form
         else if (event.target.id === "submitform" || event.target.id === "previewresume") {
 
             let error = document.getElementsByTagName("small")
@@ -180,15 +177,16 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
             }
 
             let html = `<!DOCTYPE html>
-<html>
+                        <html>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
-    <link href="https://fonts.googleapis.com/css?family=Catamaran:200,300,400,500,600,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-    <link href="style.css" rel="stylesheet">`
+                        <head>
+                            <meta charset="utf-8">
+                            <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
+                            <link href="https://fonts.googleapis.com/css?family=Catamaran:200,300,400,500,600,700" rel="stylesheet">
+                            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+                            <link href="style.css" rel="stylesheet">`
 
+            //creating image class for preview
             let img = new Image()
             img.src = window.URL.createObjectURL(formvalues["photo"].files[0])
 
@@ -198,28 +196,24 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
             }
 
             html = html + `
-        <title>Resume | ${formvalues["name"].value}</title>
-        </head>
-    
-    <body>
-        <div class="left">
-            <div class="leftbg"
-            style="background : url(${event.target.id === "submitform" ? `${formvalues["photo"].files[0].name}` : `${img.src}`}) center center no-repeat !important; background-size: cover !important ">
-            </div>
-            <div class="left_inner">
-                <div class="left_info">
-            `;
+                            <title>Resume | ${formvalues["name"].value}</title>
+                        </head>
+                        <body>
+                            <div class="left">
+                                <div class="leftbg"
+                                style="background : url(${event.target.id === "submitform" ? `${formvalues["photo"].files[0].name}` : `${img.src}`}) center center no-repeat !important; background-size: cover !important ">
+                                </div>
+                                <div class="left_inner">
+                                    <div class="left_info">`;
 
             if (formvalues["name"].value && formvalues["name"].value.trim().length) {
                 html = html + `
-                    <h2> Hey, I'm ${formvalues["name"].value}</h2>`
+                                    <h2> Hey, I'm ${formvalues["name"].value}</h2>`
             }
 
             if (formvalues["tagline"].value && formvalues["tagline"].value.trim().length) {
                 html = html + `
-            <div>
-                ${formvalues["tagline"].value}
-            </div>`
+                                    <div>${formvalues["tagline"].value}</div>`
             }
             else {
                 error[0].style.display = "block"
@@ -227,13 +221,13 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
             }
 
             html = html + `
-                    <div class="links">`
+                                    <div class="links">`
 
             if (formvalues["mailid"].value && formvalues["mailid"].value.trim().length) {
                 html = html + `
-            <a href="mailto:${formvalues["mailid"].value.trim()}" target="_blank">
-                <i class="fa fa-envelope"></i>
-            </a>`
+                                    <a href="mailto:${formvalues["mailid"].value.trim()}" target="_blank">
+                                        <i class="fa fa-envelope"></i>
+                                    </a>`
             }
             else {
                 error[0].style.display = "block"
@@ -242,72 +236,67 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
 
             if (formvalues["linkedin"].value && formvalues["linkedin"].value.trim().length) {
                 html = html + `
-            <a href="https://www.linkedin.com/in/${formvalues["linkedin"].value.trim()}" target="_blank">
-                <i class="fa fa-linkedin"></i>
-            </a>`
+                                    <a href="https://www.linkedin.com/in/${formvalues["linkedin"].value.trim()}" target="_blank">
+                                        <i class="fa fa-linkedin"></i>
+                                    </a>`
             }
 
             if (formvalues["github"].value && formvalues["github"].value.trim().length) {
                 html = html + `
-            <a href="https://github.com/${formvalues["github"].value.trim()}" target="_blank">
-                <i class="fa fa-github"></i>
-            </a>`
+                                    <a href="https://github.com/${formvalues["github"].value.trim()}" target="_blank">
+                                        <i class="fa fa-github"></i>
+                                    </a>`
             }
 
             if (formvalues["portfolio"].value && formvalues["portfolio"].value.trim().length) {
                 html = html + `
-            <a href="${formvalues["portfolio"].value.trim()}" target="_blank">
-                <i class="fa fa-globe"></i>
-            </a>`
+                                    <a href="${formvalues["portfolio"].value.trim()}" target="_blank">
+                                        <i class="fa fa-globe"></i>
+                                    </a>`
             }
 
             if (formvalues["twitter"].value && formvalues["twitter"].value.trim().length) {
                 html = html + `
-            <a href="https://twitter.com/${formvalues["twitter"].value.trim()}" target="_blank">
-                <i class="fa fa-twitter"></i>
-            </a>`
+                                    <a href="https://twitter.com/${formvalues["twitter"].value.trim()}" target="_blank">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>`
             }
 
             if (formvalues["instagram"].value && formvalues["instagram"].value.trim().length) {
                 html = html + `
-            <a href="https://instagram.com/${formvalues["instagram"].value.trim()}" target="_blank">
-                <i class="fa fa-instagram"></i>
-            </a>`
+                                    <a href="https://instagram.com/${formvalues["instagram"].value.trim()}" target="_blank">
+                                        <i class="fa fa-instagram"></i>
+                                    </a>`
             }
 
             html = html + `
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="right">
-            <div class="right_inner">`
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <div class="right_inner">`
 
             if (formvalues["about"].value && formvalues["about"].value.trim().length) {
                 html = html + `
-            <div class="content">
-                <h4 class="heading">INTRO</h4>
-                <p>
-                ${formvalues["about"].value.trim().replace(/\n/g, "</p>\n<p>")}
-                </p>
-            </div>`
+                                    <div class="content">
+                                        <h4 class="heading">INTRO</h4>
+                                        <p>${formvalues["about"].value.trim().replace(/\n/g, "</p>\n<p>")}</p>
+                                    </div>`
             }
 
             if (listobj.skills.length > 0) {
                 html = html + `
-            <!-- Skills -->
-            <div class="content">
-                        <h4 class="heading">SKILLS</h4>`
+                                <!-- Skills -->
+                                    <div class="content">
+                                        <h4 class="heading">SKILLS</h4>`
 
                 for (let i = 0; i < listobj.skills.length; i++) {
                     let tempvalue = formvalues[`skill[${listobj.skills[i]}][value]`].value.trim();
                     let tempheading = formvalues[`skill[${listobj.skills[i]}][heading]`].value.trim();
                     if (tempvalue && tempvalue.length) {
                         html = html + `
-                    <p>
-                    ${tempheading && tempheading.length ? `<strong> ${tempheading} : </strong>` : ""}
-                        <span>${tempvalue}</span>
-                    </p>`
+                                        <p>${tempheading && tempheading.length ? `<strong> ${tempheading} : </strong>` : ""}<span>${tempvalue}</span></p>`
                     }
                     else {
                         error[0].style.display = "block"
@@ -316,16 +305,16 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
                 }
 
                 html = html + `
-            </div>`
+                                    </div>`
 
             }
 
 
             if (listobj.education.length > 0) {
                 html = html + `
-            <!-- Education -->
-            <div class="content">
-                <h4 class="heading">EDUCATION</h4>`
+                                <!-- Education -->
+                                    <div class="content">
+                                        <h4 class="heading">EDUCATION</h4>`
 
                 for (let i = 0; i < listobj.education.length; i++) {
                     let tempuniversity = formvalues[`education[${listobj.education[i]}][university]`].value.trim();
@@ -335,20 +324,18 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
 
                     if (tempuniversity && tempuniversity.length && tempcourse && tempcourse.length && tempfrom && tempfrom.length) {
                         html = html + `
-                    <div class="category">
-                        <div>
-                            <strong>${tempuniversity}</strong>
-                        </div>
-                        <span>${tempcourse}</span>
-                        <div>
-                            <div class="duration">
-                                ${tempfrom}
-                                ${tempcgpa && tempcgpa.trim().length ? `<div class="cgpa">
-                                CGPA: ${tempcgpa}
-                            </div>`: ``}
-                            </div>
-                        </div>
-                    </div>`
+                                        <div class="category">
+                                            <div>
+                                                <strong>${tempuniversity}</strong>
+                                            </div>
+                                            <span>${tempcourse}</span>
+                                            <div>
+                                                <div class="duration">${tempfrom}${tempcgpa && tempcgpa.trim().length ? `
+                                                <div class="cgpa">
+                                                    CGPA: ${tempcgpa}
+                                                </div>`: ``}</div>
+                                            </div>
+                                        </div>`
                     }
                     else {
                         error[0].style.display = "block"
@@ -357,16 +344,16 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
                 }
 
                 html = html + `
-            </div>`;
+                                    </div>`;
 
             }
 
             if (listobj.experience.length > 0) {
 
                 html = html + `
-        <!-- Experience -->
-        <div class="content">
-                    <h4 class="heading">EXPERIENCE</h4>`
+                                <!-- Experience -->
+                                    <div class="content">
+                                        <h4 class="heading">EXPERIENCE</h4>`
 
 
                 for (let i = 0; i < listobj.experience.length; i++) {
@@ -377,18 +364,16 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
 
                     if (tempcompany && tempcompany.length && temprole && temprole.length && tempduration && tempduration.length) {
                         html = html + `
-                    <div class="category">
-                        <div>
-                            <strong>${tempcompany}</strong>
-                        </div>
-                        <div>
-                            <strong>${temprole}</strong>
-                        </div>
-                        <div class="duration">
-                            ${tempduration}
-                        </div>
-                        ${tempdescription}
-                    </div>`
+                                        <div class="category">
+                                            <div>
+                                                <strong>${tempcompany}</strong>
+                                            </div>
+                                            <div>
+                                                <strong>${temprole}</strong>
+                                            </div>
+                                            <div class="duration">${tempduration}</div>
+                                            ${tempdescription}
+                                        </div>`
                     }
                     else {
                         error[0].style.display = "block"
@@ -397,14 +382,14 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
                 }
 
                 html = html + `
-        </div>`;
+                                    </div>`;
             }
 
             if (listobj.projects.length > 0) {
                 html = html + `
-        <!-- Projects -->
-        <div class="content">
-                    <h4 class="heading">PROJECTS</h4>`
+                                <!-- Projects -->
+                                    <div class="content">
+                                        <h4 class="heading">PROJECTS</h4>`
 
                 let projectcheck = false;
 
@@ -415,12 +400,12 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
                     if (tempname && tempname.length) {
                         projectcheck = true;
                         html = html +
-                            `<div class="category">
-                            <div class="subheading">
-                                <strong>${tempname}</strong>
-                            </div>
-                            <p>${tempdescription}</p>
-                        </div>`
+                            `           <div class="category">
+                                            <div class="subheading">
+                                                <strong>${tempname}</strong>
+                                            </div>
+                                            <p>${tempdescription}</p>
+                                        </div>`
                     }
                     else {
                         error[0].style.display = "block"
@@ -429,28 +414,30 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
                 }
 
                 html = html + `
-        </div>`;
+                                    </div>`;
             }
 
             if (formvalues['pdflink'].value && formvalues['pdflink'].value.trim()) {
                 html = html + `
-            <a class="pdf_link" href="${formvalues['pdflink'].value.trim()}">
-            	GRAB A PDF OF MY FULL RESUME
-            </a>`
+                                    <a class="pdf_link" href="${formvalues['pdflink'].value.trim()}">
+                                        GRAB A PDF OF MY FULL RESUME
+                                    </a>`
             }
 
             html = html + `
-            </div>
-        </div>
-    </body>
-    </html>`
+                                </div>
+                            </div>
+                    </body>
+                    </html>`
 
-            //preview resume && submit form
+
+            //if no errors then remove the error indicator
             if (error[0].style.display === "block") {
                 error[0].style.display = "none"
             }
 
             if (event.target.id === "previewresume") {
+                //opening new window for preview
                 localStorage.setItem("resume_online", JSON.stringify(html));
                 window.open("preview.html")
             }
@@ -459,6 +446,7 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
                 let style = await fetch('./styles/style.css')
                 style = await style.text()
 
+                //creating zip file
                 var zip = new JSZip();
                 zip.file("index.html", html);
                 zip.file(formvalues["photo"].files[0].name, formvalues["photo"].files[0])
@@ -466,7 +454,7 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
 
                 let content = await zip.generateAsync({ type: "base64" });
 
-
+                //download link
                 let element = document.createElement('a');
                 element.setAttribute('href', "data:application/zip;base64," + content)
                 element.setAttribute('download', `${formvalues["name"].value.trim()}_personal_resume_website.zip`)
@@ -482,12 +470,13 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
         }
     }
     catch (e) {
-        alert("Something wrong happened, Please inform me")
+        alert("Something wrong happened :( ")
         return false
     }
 
 })
 
+//clear local storage on closing the window
 
 window.addEventListener("unload", (event) => {
     localStorage.clear("resume_online")
