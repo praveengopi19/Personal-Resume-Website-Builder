@@ -170,12 +170,12 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
             let extension = formvalues["photo"].files[0].type.split('/').pop().toLowerCase()
 
             if (extension !== "jpeg" && extension !== "gif" && extension !== "png" && extension !== "jpg") {
-                alert("Invalid File format supported formats are jpeg, gif, png, jpg ")
+                alert("Invalid File format! \nSupported formats are jpeg, gif, png, jpg ")
                 return false
             }
 
             if (formvalues["photo"].files[0].size > 512000) {
-                alert("Image size should be less than 500kb")
+                alert("Image size should be less than 512 KB")
                 return false
             }
 
@@ -456,7 +456,7 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
             }
             else if (event.target.id === "submitform") {
 
-                let style = await fetch('./style.css')
+                let style = await fetch('./styles/style.css')
                 style = await style.text()
 
                 var zip = new JSZip();
@@ -469,7 +469,7 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
 
                 let element = document.createElement('a');
                 element.setAttribute('href', "data:application/zip;base64," + content)
-                element.setAttribute('download', 'index.zip')
+                element.setAttribute('download', `${formvalues["name"].value.trim()}_personal_resume_website.zip`)
                 element.style.display = 'none'
                 document.body.appendChild(element)
                 element.click();
