@@ -456,7 +456,7 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
             }
             else if (event.target.id === "submitform") {
 
-                let style = await fetch('./style.css')
+                let style = await fetch('./styles/style.css')
                 style = await style.text()
 
                 var zip = new JSZip();
