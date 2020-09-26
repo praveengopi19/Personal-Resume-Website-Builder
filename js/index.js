@@ -255,6 +255,20 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
                                     </a>`
             }
 
+            if (formvalues["behance"].value && formvalues["behance"].value.trim().length) {
+                html = html + `
+                                    <a href="https://www.behance.net/${formvalues["behance"].value.trim()}" target="_blank">
+                                        <i class="fa fa-behance"></i>
+                                    </a>`
+            }
+
+            if (formvalues["dribbble"].value && formvalues["dribbble"].value.trim().length) {
+                html = html + `
+                                    <a href="https://dribbble.com/${formvalues["dribbble"].value.trim()}" target="_blank">
+                                        <i class="fa fa-dribbble"></i>
+                                    </a>`
+            }
+
             if (formvalues["twitter"].value && formvalues["twitter"].value.trim().length) {
                 html = html + `
                                     <a href="https://twitter.com/${formvalues["twitter"].value.trim()}" target="_blank">
