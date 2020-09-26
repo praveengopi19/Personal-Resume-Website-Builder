@@ -71,7 +71,7 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
                 </div>
                 <div class="input_container">
                     <input type="text" name="education[${educationid}][from]" required />
-                    <label>Duration <sup>*</sup></label>
+                    <label>Duration (From - To) <sup>*</sup></label>
                 </div>
                 <div class="input_container">
                     <input type="text" name="education[${educationid}][cgpa]" required />
@@ -110,7 +110,7 @@ document.getElementById("click_div").addEventListener("click", async (event) => 
                 </div>
                 <div class="input_container">
                     <input type="text" name="experience[${experienceid}][duration]" required />
-                    <label>Duration <sup>*</sup></label>
+                    <label>Duration Duration (From - To) <sup>*</sup></label>
                 </div>
         `;
             listobj.experience.push(experienceid)
