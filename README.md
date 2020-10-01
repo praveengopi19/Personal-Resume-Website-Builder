@@ -8,4 +8,4 @@ Check out the [Demo](https://praveengopi19.github.io/Personal-Resume-Website-Bui
 Feel free to contribute :)
 
 ### Credits
-A layout inspired by [https://bchiang7.github.io/react-profile/](https://bchiang7.github.io/react-profile/)
+A layout inspired by [https://bchiang7.github.io/react-profile](https://bchiang7.github.io/react-profile)
