@@ -2,6 +2,14 @@
 # Personal-resume-website-builder
 A web application to create an online personal resume/portfolio website using HTML forms. The features include creating n number of inputs for a particular field, preview their personal resume website at the time of creation, and can download the resultant website source code files as Zip file format.
 
+## Demo Mockup
+
+**Desktop view mockup**  
+![Desktop view](/Demo_files/Resume-maker-Desktop.jpg "Desktop mockup.")
+
+**Mobile view mockup**  
+![Desktop view](/Demo_files/Resume-maker-mobile.jpg "Desktop mockup.")
+
 Check out the [Demo](https://praveengopi19.github.io/Personal-Resume-Website-Builder) of this repository
 
 ## :v: Contributing
