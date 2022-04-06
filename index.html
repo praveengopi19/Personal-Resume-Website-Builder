@@ -11,7 +11,8 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,500,600,700" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link href="styles/index.css" rel="stylesheet">
-    <script type="text/javascript" src="js/jszip.min.js"></script>
+    <script type="text/javascript" defer src="js/jszip.min.js"></script>
+    <script type="module" src="js/refactorIndex.js"></script>
     <title>
         Personal resume website builder
     </title>
@@ -23,7 +24,7 @@
         <div class="header">
             <ul>
                 <li class="subheader">Few note!</li>
-                <li>- Labels indicated with <sup>*</sup> are required fields</li>
+                <li>- Labels indicated with <sup>*</sup> are temprequired fields</li>
                 <li>- Upload an image size which is less than 512 KB in size (Greater the image size
                     longer the
                     loading time of
@@ -39,171 +40,157 @@
         </div>
     </section>
     <form id="resume_form">
-        <div id="click_div">
-            <fieldset>
-                <h2>About</h2>
-                <div>
-                    <div class="input_container">
-                        <input type="text" id="name" required />
-                        <label>Name <sup>*</sup></label>
-                    </div>
-                    <div class="input_container">
-                        <input type="text" id="tagline" required />
-                        <label>Tagline <sup>*</sup></label>
-                    </div>
-                    <div class="input_container">
-                        <input type="text" id="mailid" required />
-                        <label>email id <sup>*</sup></label>
-                    </div>
-                    <div class="input_container">
-                        <input type="text" id="linkedin" required />
-                        <label>Linkedin Username</label>
-                    </div>
-                    <div class="input_container">
-                        <input type="text" id="github" required />
-                        <label>GitHub Username</label>
-                    </div>
-                    <div class="input_container">
-                        <input type="text" id="portfolio" required />
-                        <label>Portfolio Link</label>
-                    </div>
-                    <div class="input_container">
-                        <input type="text" id="behance" required />
-                        <label>Behance Username</label>
-                    </div>
-                    <div class="input_container">
-                        <input type="text" id="dribbble" required />
-                        <label>Dribbble Username</label>
-                    </div>
-                    <div class="input_container">
-                        <input type="text" id="twitter" required />
-                        <label>Twitter Username</label>
-                    </div>
-                    <div class="input_container">
-                        <input type="text" id="instagram" required />
-                        <label>Instagram Username</label>
-                    </div>
-                    <div class="input_container">
-                        <input type="text" id="pdflink" required />
-                        <label>PDF link for full resume</label>
-                    </div>
-                    <div class="input_container">
-                        <input type="file" id="photo" required />
-                        <label>Photo of Yours <sup>*</sup></label>
-                    </div>
-                </div>
-            </fieldset>
-            <fieldset>
-                <h2>Intro</h2>
+        <fieldset>
+            <h2>About</h2>
+            <div>
                 <div class="input_container">
-                    <textarea id="about" required></textarea>
-                    <label>Summary</label>
+                    <input type="text" id="name" temprequired />
+                    <label>Name <sup>*</sup></label>
                 </div>
-            </fieldset>
-            <fieldset>
-                <h2>Skills</h2>
-                <div id="skills">
-                    <div id="1" class="input_set">
-                        <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
-
-                        <div class="input_container">
-                            <input type="text" id="skill[1][heading]" required />
-                            <label>Heading</label>
-                        </div>
-                        <div class="input_container">
-                            <input type="text" id="skill[1][value]" required />
-                            <label>Skills <sup>*</sup></label>
-                        </div>
-                    </div>
+                <div class="input_container">
+                    <input type="text" id="tagline" temprequired />
+                    <label>Tagline <sup>*</sup></label>
                 </div>
-                <button type="button" id="addskills" class="add_button">Add skills</button>
-            </fieldset>
-
-            <fieldset>
-                <h2>Education</h2>
-                <div id="education">
-                    <div id="1" class="input_set">
-                        <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
-                        <div class="input_container">
-                            <input type="text" name="education[1][university]" required />
-                            <label>University <sup>*</sup></label>
-                        </div>
-                        <div class="input_container">
-                            <input type="text" name="education[1][course]" required />
-                            <label>Course <sup>*</sup></label>
-                        </div>
-                        <div class="input_container">
-                            <input type="text" name="education[1][from]" required />
-                            <label>Duration (From - To) <sup>*</sup></label>
-                        </div>
-                        <div class="input_container">
-                            <input type="text" name="education[1][cgpa]" required />
-                            <label>CGPA</label>
-                        </div>
-                    </div>
+                <div class="input_container">
+                    <input type="text" id="mailid" temprequired />
+                    <label>email id <sup>*</sup></label>
                 </div>
-                <button type="button" id="addeduction" class="add_button">Add Education</button>
-            </fieldset>
-
-            <fieldset>
-                <h2>Experience</h2>
-                <div id="experience">
-                    <div id="1" class="input_set">
-                        <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
-                        <div class="input_container">
-                            <input type="text" name="experience[1][companyname]" required />
-                            <label>Company Name <sup>*</sup></label>
-                        </div>
-                        <div class="input_container">
-                            <input type="text" name="experience[1][role]" required />
-                            <label>Role <sup>*</sup></label>
-                        </div>
-                        <div class="input_container">
-                            <textarea id="experience[1][description]" required></textarea>
-                            <label>Description</label>
-                        </div>
-                        <div class="input_container">
-                            <input type="text" name="experience[1][duration]" required />
-                            <label>Duration (From - To) <sup>*</sup></label>
-                        </div>
-                    </div>
+                <div class="input_container">
+                    <input type="text" id="linkedin" temprequired />
+                    <label>Linkedin Username</label>
                 </div>
-                <button type="button" id="addexperience" class="add_button">Add Experience</button>
-            </fieldset>
-
-            <fieldset>
-                <h2>Projects</h2>
-                <div id="projects">
-                    <div id="1" class="input_set">
-                        <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
-                        <div class="input_container">
-                            <input type="text" name="project[1][name]" required />
-                            <label>Title <sup>*</sup></label>
-                        </div>
-                        <div class="input_container">
-                            <textarea id="project[1][description]" required></textarea>
-                            <label>Description</label>
-                        </div>
-                    </div>
+                <div class="input_container">
+                    <input type="text" id="github" temprequired />
+                    <label>GitHub Username</label>
                 </div>
-                <button type="button" id="addproject" class="add_button">Add Projects</button>
-            </fieldset>
-            <small><i class="fa fa-warning"></i> Please fill all the required fields </small>
-            <div class="button_div">
-                <button id="submitform" class="submit_button" type="button">Submit</button>
-                <button id="previewresume" class="preview_button" type="button">Preview</button>
+                <div class="input_container">
+                    <input type="text" id="portfolio" temprequired />
+                    <label>Portfolio Link</label>
+                </div>
+                <div class="input_container">
+                    <input type="text" id="behance" temprequired />
+                    <label>Behance Username</label>
+                </div>
+                <div class="input_container">
+                    <input type="text" id="dribbble" temprequired />
+                    <label>Dribbble Username</label>
+                </div>
+                <div class="input_container">
+                    <input type="text" id="twitter" temprequired />
+                    <label>Twitter Username</label>
+                </div>
+                <div class="input_container">
+                    <input type="text" id="instagram" temprequired />
+                    <label>Instagram Username</label>
+                </div>
+                <div class="input_container">
+                    <input type="text" id="pdflink" temprequired />
+                    <label>PDF link for full resume</label>
+                </div>
+                <div class="input_container">
+                    <input type="file" id="photo" temprequired />
+                    <label>Photo of Yours <sup>*</sup></label>
+                </div>
             </div>
+        </fieldset>
+        <fieldset>
+            <h2>Intro</h2>
+            <div class="input_container">
+                <textarea id="about" temprequired></textarea>
+                <label>Summary</label>
+            </div>
+        </fieldset>
+        <fieldset id="skill">
+            <h2>Skills</h2>
+            <div id="1" class="input_set">
+                <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
+
+                <div class="input_container">
+                    <input type="text" id="skill[1][heading]" temprequired />
+                    <label>Heading</label>
+                </div>
+                <div class="input_container">
+                    <input type="text" id="skill[1][value]" temprequired />
+                    <label>Skills <sup>*</sup></label>
+                </div>
+            </div>
+            <button type="button" id="add" class="add_button">Add skills</button>
+        </fieldset>
+
+        <fieldset id="education">
+            <h2>Education</h2>
+            <div id="1" class="input_set">
+                <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
+                <div class="input_container">
+                    <input type="text" name="education[1][university]" temprequired />
+                    <label>University <sup>*</sup></label>
+                </div>
+                <div class="input_container">
+                    <input type="text" name="education[1][course]" temprequired />
+                    <label>Course <sup>*</sup></label>
+                </div>
+                <div class="input_container">
+                    <input type="text" name="education[1][from]" temprequired />
+                    <label>Duration (From - To) <sup>*</sup></label>
+                </div>
+                <div class="input_container">
+                    <input type="text" name="education[1][cgpa]" temprequired />
+                    <label>CGPA</label>
+                </div>
+            </div>
+            <button type="button" id="add" class="add_button">Add Education</button>
+        </fieldset>
+
+        <fieldset id="experience">
+            <h2>Experience</h2>
+            <div id="1" class="input_set">
+                <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
+                <div class="input_container">
+                    <input type="text" name="experience[1][companyname]" temprequired />
+                    <label>Company Name <sup>*</sup></label>
+                </div>
+                <div class="input_container">
+                    <input type="text" name="experience[1][role]" temprequired />
+                    <label>Role <sup>*</sup></label>
+                </div>
+                <div class="input_container">
+                    <textarea id="experience[1][description]" temprequired></textarea>
+                    <label>Description</label>
+                </div>
+                <div class="input_container">
+                    <input type="text" name="experience[1][duration]" temprequired />
+                    <label>Duration (From - To) <sup>*</sup></label>
+                </div>
+            </div>
+            <button type="button" id="add" class="add_button">Add Experience</button>
+        </fieldset>
+
+        <fieldset id="project">
+            <h2>Projects</h2>
+            <div id="1" class="input_set">
+                <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
+                <div class="input_container">
+                    <input type="text" name="project[1][name]" temprequired />
+                    <label>Title <sup>*</sup></label>
+                </div>
+                <div class="input_container">
+                    <textarea id="project[1][description]" temprequired></textarea>
+                    <label>Description</label>
+                </div>
+            </div>
+            <button type="button" id="add" class="add_button">Add Projects</button>
+        </fieldset>
+        <small><i class="fa fa-warning"></i> Please fill all the temprequired fields </small>
+        <div class="button_div">
+            <button id="submitform" class="submit_button" type="submit" form="resume_form"
+                value="Submit">Submit</button>
+            <button id="previewresume" class="preview_button" type="button">Preview</button>
         </div>
     </form>
     <footer>
         <p>Made With ❤ By <a class="portfolio_link" href="https://praveengopi19.github.io" target="_blank">Praveen
                 Kumar</a></p>
     </footer>
-
-    <script type="module" src="js/index.js">
-
-
-    </script>
 
 </body>
 
