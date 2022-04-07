@@ -24,7 +24,7 @@
         <div class="header">
             <ul>
                 <li class="subheader">Few note!</li>
-                <li>- Labels indicated with <sup>*</sup> are temprequired fields</li>
+                <li>- Labels indicated with <sup>*</sup> are required fields</li>
                 <li>- Upload an image size which is less than 512 KB in size (Greater the image size
                     longer the
                     loading time of
@@ -44,51 +44,51 @@
             <h2>About</h2>
             <div>
                 <div class="input_container">
-                    <input type="text" id="name" temprequired />
+                    <input type="text" id="name" required  placeholder=" "/>
                     <label>Name <sup>*</sup></label>
                 </div>
                 <div class="input_container">
-                    <input type="text" id="tagline" temprequired />
+                    <input type="text" id="tagline" required  placeholder=" "/>
                     <label>Tagline <sup>*</sup></label>
                 </div>
                 <div class="input_container">
-                    <input type="text" id="mailid" temprequired />
+                    <input type="text" id="mailid" required  placeholder=" " />
                     <label>email id <sup>*</sup></label>
                 </div>
                 <div class="input_container">
-                    <input type="text" id="linkedin" temprequired />
+                    <input type="text" id="linkedin" placeholder=" "/>
                     <label>Linkedin Username</label>
                 </div>
                 <div class="input_container">
-                    <input type="text" id="github" temprequired />
+                    <input type="text" id="github"  placeholder=" "/>
                     <label>GitHub Username</label>
                 </div>
                 <div class="input_container">
-                    <input type="text" id="portfolio" temprequired />
+                    <input type="text" id="portfolio"  placeholder=" "/>
                     <label>Portfolio Link</label>
                 </div>
                 <div class="input_container">
-                    <input type="text" id="behance" temprequired />
+                    <input type="text" id="behance"  placeholder=" "/>
                     <label>Behance Username</label>
                 </div>
                 <div class="input_container">
-                    <input type="text" id="dribbble" temprequired />
+                    <input type="text" id="dribbble"  placeholder=" "/>
                     <label>Dribbble Username</label>
                 </div>
                 <div class="input_container">
-                    <input type="text" id="twitter" temprequired />
+                    <input type="text" id="twitter"  placeholder=" "/>
                     <label>Twitter Username</label>
                 </div>
                 <div class="input_container">
-                    <input type="text" id="instagram" temprequired />
+                    <input type="text" id="instagram"  placeholder=" "/>
                     <label>Instagram Username</label>
                 </div>
                 <div class="input_container">
-                    <input type="text" id="pdflink" temprequired />
+                    <input type="text" id="pdflink"  placeholder=" "/>
                     <label>PDF link for full resume</label>
                 </div>
                 <div class="input_container">
-                    <input type="file" id="photo" temprequired />
+                    <input type="file" id="photo" required="true" />
                     <label>Photo of Yours <sup>*</sup></label>
                 </div>
             </div>
@@ -96,7 +96,7 @@
         <fieldset>
             <h2>Intro</h2>
             <div class="input_container">
-                <textarea id="about" temprequired></textarea>
+                <textarea id="about"  placeholder=" "></textarea>
                 <label>Summary</label>
             </div>
         </fieldset>
@@ -106,11 +106,11 @@
                 <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
 
                 <div class="input_container">
-                    <input type="text" id="skill[1][heading]" temprequired />
+                    <input type="text" id="skill[1][heading]"  placeholder=" " />
                     <label>Heading</label>
                 </div>
                 <div class="input_container">
-                    <input type="text" id="skill[1][value]" temprequired />
+                    <input type="text" id="skill[1][value]" required  placeholder=" " />
                     <label>Skills <sup>*</sup></label>
                 </div>
             </div>
@@ -122,19 +122,19 @@
             <div id="1" class="input_set">
                 <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
                 <div class="input_container">
-                    <input type="text" name="education[1][university]" temprequired />
+                    <input type="text" name="education[1][university]" required  placeholder=" " />
                     <label>University <sup>*</sup></label>
                 </div>
                 <div class="input_container">
-                    <input type="text" name="education[1][course]" temprequired />
+                    <input type="text" name="education[1][course]" required  placeholder=" " />
                     <label>Course <sup>*</sup></label>
                 </div>
                 <div class="input_container">
-                    <input type="text" name="education[1][from]" temprequired />
+                    <input type="text" name="education[1][from]" required  placeholder=" " />
                     <label>Duration (From - To) <sup>*</sup></label>
                 </div>
                 <div class="input_container">
-                    <input type="text" name="education[1][cgpa]" temprequired />
+                    <input type="text" name="education[1][cgpa]"  placeholder=" " />
                     <label>CGPA</label>
                 </div>
             </div>
@@ -146,19 +146,19 @@
             <div id="1" class="input_set">
                 <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
                 <div class="input_container">
-                    <input type="text" name="experience[1][companyname]" temprequired />
+                    <input type="text" name="experience[1][companyname]" required  placeholder=" " />
                     <label>Company Name <sup>*</sup></label>
                 </div>
                 <div class="input_container">
-                    <input type="text" name="experience[1][role]" temprequired />
+                    <input type="text" name="experience[1][role]" required  placeholder=" " />
                     <label>Role <sup>*</sup></label>
                 </div>
                 <div class="input_container">
-                    <textarea id="experience[1][description]" temprequired></textarea>
+                    <textarea id="experience[1][description]"  placeholder=" "></textarea>
                     <label>Description</label>
                 </div>
                 <div class="input_container">
-                    <input type="text" name="experience[1][duration]" temprequired />
+                    <input type="text" name="experience[1][duration]" required  placeholder=" " />
                     <label>Duration (From - To) <sup>*</sup></label>
                 </div>
             </div>
@@ -170,20 +170,19 @@
             <div id="1" class="input_set">
                 <button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
                 <div class="input_container">
-                    <input type="text" name="project[1][name]" temprequired />
+                    <input type="text" name="project[1][name]" required  placeholder=" " />
                     <label>Title <sup>*</sup></label>
                 </div>
                 <div class="input_container">
-                    <textarea id="project[1][description]" temprequired></textarea>
+                    <textarea id="project[1][description]"  placeholder=" "></textarea>
                     <label>Description</label>
                 </div>
             </div>
             <button type="button" id="add" class="add_button">Add Projects</button>
         </fieldset>
-        <small><i class="fa fa-warning"></i> Please fill all the temprequired fields </small>
+        <small><i class="fa fa-warning"></i> Please fill all the required="true" fields </small>
         <div class="button_div">
-            <button id="submitform" class="submit_button" type="submit" form="resume_form"
-                value="Submit">Submit</button>
+            <button id="submitform" class="submit_button" type="submit" form="resume_form">Submit</button>
             <button id="previewresume" class="preview_button" type="button">Preview</button>
         </div>
     </form>
