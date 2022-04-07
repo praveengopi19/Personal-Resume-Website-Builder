@@ -1,0 +1,12 @@
+// Basic Sanity
+
+document.querySelectorAll("#delete").forEach((node)=>{
+    node.click()
+})
+
+document.querySelectorAll("#name, #tagline, #mailid").forEach((node)=>{
+    node.value="a"
+})
+
+document.getElementById("photo").focus()
+
