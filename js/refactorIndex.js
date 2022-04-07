@@ -14,6 +14,8 @@ const listobj = {
   project: [1],
 };
 
+const PHOTO_NAME="displayPicture."
+
 const innerHTMLTemplate = {
   skill: (id) => (
     `<button type="button" id="delete" class="fa fa-minus-circle remove_icon"></button>
@@ -77,24 +79,9 @@ const innerHTMLTemplate = {
   ),
 };
 
-const generateZip = async (html, photo) => {
-  let style = await fetch('./styles/style.css');
-  style = await style.text();
-
-  // creating zip file
-  const zip = new JSZip();
-  zip.file('index.html', html);
-  zip.file(photo.name, photo);
-  zip.file('style.css', style);
-
-  const content = await zip.generateAsync({ type: 'base64' });
-
-  return content;
-};
-
 const handleAddPartion = (event) => {
   const parent = event.target.parentNode;
-  const nodeid = nodeIdsMap[parent.id]++;
+  const nodeid = ++nodeIdsMap[parent.id];
   const template = innerHTMLTemplate[parent.id](nodeid);
   listobj[parent.id].push(nodeid);
 
@@ -128,12 +115,14 @@ document.querySelectorAll('fieldset#skill, fieldset#education, fieldset#experien
   node.addEventListener('click', fieldsetClickHandler);
 });
 
+const getPhotoExtension = (photo) => photo.type.split('/').pop().toLowerCase();
+
 const hasValidPhoto = (photoFiles) => {
   if (!photoFiles[0]) {
     return ({ condition: false, code: 1 });
   }
 
-  const extension = photoFiles[0].type.split('/').pop().toLowerCase();
+  const extension = getPhotoExtension(photoFiles[0]);
 
   if (extension !== 'jpeg' && extension !== 'gif' && extension !== 'png' && extension !== 'jpg') {
     return ({
@@ -166,7 +155,7 @@ const handleError = (error) => {
   }
 };
 
-const constructDom = (formvalues) => {
+const constructDom = (formvalues, isPreview) => {
   const { condition: validPhoto, ...rest } = hasValidPhoto(formvalues.photo.files);
 
   if (!validPhoto) {
@@ -184,7 +173,7 @@ const constructDom = (formvalues) => {
   }
 
   // const imageURL = new FileReader(form.photo.files[0]).readAsDataURL()
-  const imageURL = window.URL.createObjectURL(formvalues.photo.files[0]);
+  const imageURL = isPreview ? window.URL.createObjectURL(formvalues.photo.files[0]) : PHOTO_NAME + getPhotoExtension(formvalues.photo.files[0]);
 
   let html = `<!DOCTYPE html>
     <html>
@@ -375,6 +364,23 @@ const constructDom = (formvalues) => {
   return html;
 };
 
+const generateZip = async (html, photo) => {
+  let style = await fetch('./styles/style.css');
+  style = await style.text();
+
+  const name = PHOTO_NAME + getPhotoExtension(photo)
+
+  // creating zip file
+  const zip = new JSZip();
+  zip.file('index.html', html);
+  zip.file(name, photo);
+  zip.file('style.css', style);
+
+  const content = await zip.generateAsync({ type: 'base64' });
+
+  return content;
+};
+
 const downloadZip = (content, fileName) => {
   const element = document.createElement('a');
   element.setAttribute('href', `data:application/zip;base64,${content}`);
@@ -394,8 +400,9 @@ const hideErrorDisplay = () => {
 };
 
 document.getElementById('resume_form').addEventListener('submit', (event) => {
+  console.time("Start")
   try {
-    const dom = constructDom(event.target.elements);
+    const dom = constructDom(event.target.elements, event.submitter.id === "previewresume");
     hideErrorDisplay();
 
     if (event.submitter.id === "downloadzip") {
@@ -409,6 +416,7 @@ document.getElementById('resume_form').addEventListener('submit', (event) => {
   } catch (e) {
     handleError(e);
   }
+  console.timeEnd("Start")
   event.preventDefault();
 });
 
