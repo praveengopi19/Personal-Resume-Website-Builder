@@ -92,7 +92,7 @@ label {
     -webkit-transition: 0.2s ease all;
 }
 
-input:focus~label,
+/* input:focus~label,
 input:valid~label,
 textarea:focus~label,
 textarea:valid~label {
@@ -100,8 +100,25 @@ textarea:valid~label {
     top       : -25px;
     font-size : 12px;
     transition: 0.3s;
+} */
+
+input[type="file"]~label,
+input[type="file"]:valid~label,
+input[type="file"]:focus~label {
+    font-size: 14px !important;
+    left     : 3%;
+    top      : -25px;
 }
 
+input:focus~label,
+textarea:focus~label,
+input:not(:placeholder-shown)~label,
+textarea:not(:placeholder-shown)~label {
+    left      : 3%;
+    top       : -25px;
+    font-size : 12px;
+    transition: 0.3s;
+}
 
 input[type="file"] {
     border     : 0;
@@ -124,13 +141,6 @@ input[type="file"]::-webkit-file-upload-button {
     cursor       : pointer !important;
 }
 
-input[type="file"]~label,
-input[type="file"]:valid~label,
-input[type="file"]:focus~label {
-    font-size: 14px !important;
-    left     : 3%;
-    top      : -25px;
-}
 
 .input_container {
     position: relative;
