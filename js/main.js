@@ -311,7 +311,7 @@ const constructDom = (formvalues, isPreview) => {
                                         <strong>${role}</strong>
                                     </div>
                                     <div class="duration">${duration}</div>
-                                    ${description}
+                                    <p>${description}</p>
                                 </div>`;
       } else {
         throw ({ code: 1 });
